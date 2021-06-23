@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "116033252035",
+    "project_id": "pay-flow-4986c",
+    "storage_bucket": "pay-flow-4986c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116033252035:android:ec22c4a870855c3c1f5076",
+        "android_client_info": {
+          "package_name": "com.drawiin.pay_flow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116033252035-cucdsldv9j48r3otd4m0ekma14ebjvfd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.drawiin.pay_flow",
+            "certificate_hash": "59ca589e3ccb26e2f1002a98a26d806f26640334"
+          }
+        },
+        {
+          "client_id": "116033252035-jn1qes2d6drjvdmvllp8ft2ne55da5bk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB6tV9DyJQ8q8gc2AyFmW6k4SnH-rK1ME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116033252035-jn1qes2d6drjvdmvllp8ft2ne55da5bk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
