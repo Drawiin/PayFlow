@@ -9,15 +9,20 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.heading,
   );
-  static final titleRegular = GoogleFonts.lexendDeca(
+  static final titleRegularHeading = GoogleFonts.lexendDeca(
     fontSize: 20,
     fontWeight: FontWeight.w400,
-    color: AppColors.background,
+    color: AppColors.heading,
   );
   static final titleBoldHeading = GoogleFonts.lexendDeca(
     fontSize: 20,
     fontWeight: FontWeight.w600,
     color: AppColors.heading,
+  );
+  static final titleRegularBackground = GoogleFonts.lexendDeca(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: AppColors.background,
   );
   static final titleBoldBackground = GoogleFonts.lexendDeca(
     fontSize: 20,

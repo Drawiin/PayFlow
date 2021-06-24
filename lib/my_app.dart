@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pay_flow/modules/barcode_scanner/barcode_scanner_screen.dart';
 import 'package:pay_flow/modules/home/home_screen.dart';
+import 'package:pay_flow/modules/insert_invoice/insert_invoice_screen.dart';
 import 'package:pay_flow/shared/themes/app_colors.dart';
 import 'package:pay_flow/shared/values/app_routes.dart';
 
@@ -22,13 +24,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: AppColors.primary,
-      ),
+          primaryColor: AppColors.primary, primarySwatch: Colors.orange),
       initialRoute: AppRoutes.splash,
       routes: {
         AppRoutes.home: (context) => HomeScreen(),
         AppRoutes.login: (context) => LoginScreen(),
         AppRoutes.splash: (context) => SplashScreen(),
+        AppRoutes.barcodeScanner: (context) => BarcodeScannerScreen(),
+        AppRoutes.insetInvoice: (context) => InsertInvoiceScreen(),
       },
     );
   }

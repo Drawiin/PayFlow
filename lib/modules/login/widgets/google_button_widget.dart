@@ -20,7 +20,7 @@ class GoogleButtonWidget extends StatelessWidget {
             color: AppColors.shape,
             borderRadius: BorderRadius.circular(AppDimens.borderRadiusSmall),
             border: Border.fromBorderSide(BorderSide(color: AppColors.stroke))),
-        height: AppDimens.sizeButtonHeight,
+        height: AppDimens.heightButton,
         child: Row(
           children: [
             Expanded(
@@ -32,7 +32,7 @@ class GoogleButtonWidget extends StatelessWidget {
                       width: AppDimens.spacingDefault,
                     ),
                     Container(
-                      height: AppDimens.sizeButtonHeight,
+                      height: AppDimens.heightButton,
                       width: 1,
                       color: AppColors.stroke,
                     )

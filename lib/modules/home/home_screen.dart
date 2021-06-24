@@ -3,6 +3,7 @@ import 'package:pay_flow/modules/home/home_controller.dart';
 import 'package:pay_flow/shared/themes/app_colors.dart';
 import 'package:pay_flow/shared/themes/app_text_styles.dart';
 import 'package:pay_flow/shared/values/app_dimens.dart';
+import 'package:pay_flow/shared/values/app_routes.dart';
 import 'package:pay_flow/shared/values/app_strings.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,14 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Scaffold(
         body: pages[controller.page],
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppDimens.sizeAppBarHeight),
+          preferredSize: Size.fromHeight(AppDimens.heightAppBar),
           child: Container(
             color: AppColors.primary,
             child: Center(
               child: ListTile(
                 title: Text.rich(TextSpan(
                     text: AppStrings.homeTitle,
-                    style: AppTextStyles.titleRegular,
+                    style: AppTextStyles.titleRegularBackground,
                     children: [
                       TextSpan(
                         text: "Vincius",
@@ -47,8 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: AppTextStyles.captionBackground,
                 ),
                 trailing: Container(
-                  height: AppDimens.sizeAvatarHeight,
-                  width: AppDimens.sizeAvatarHeight,
+                  height: AppDimens.sizeAvatar,
+                  width: AppDimens.sizeAvatar,
                   decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius:
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         bottomNavigationBar: Container(
-          height: AppDimens.sizeBottomBarHeight,
+          height: AppDimens.heightBottomBar,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -74,10 +75,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: AppColors.primary,
                   )),
               GestureDetector(
-                onTap: () => {},
+                onTap: () =>
+                    Navigator.pushNamed(context, AppRoutes.barcodeScanner),
                 child: Container(
-                  height: AppDimens.sizeAddButtonHeight,
-                  width: AppDimens.sizeAddButtonHeight,
+                  height: AppDimens.sizeAddButton,
+                  width: AppDimens.sizeAddButton,
                   decoration: BoxDecoration(
                       color: AppColors.primary,
                       borderRadius:
