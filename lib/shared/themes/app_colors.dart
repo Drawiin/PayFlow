@@ -1,6 +1,6 @@
-import  'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-class AppColors{
+class AppColors {
   static final primary = Color(0xFFFF941A);
   static final grey = Color(0xFF585666);
   static final delete = Color(0xFFE83F5B);
@@ -10,4 +10,6 @@ class AppColors{
   static final shape = Color(0xFFFAFAFC);
   static final background = Color(0xFFFFFFFF);
   static final lightGrey = Color(0xFFE3E3E5);
+  static final input = Color(0xFFB1B0B8);
+  static final secondary = Color(0xFF585666);
 }

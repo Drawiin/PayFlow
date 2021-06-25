@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pay_flow/shared/themes/app_colors.dart';
 import 'package:pay_flow/shared/themes/app_text_styles.dart';
 import 'package:pay_flow/shared/values/app_dimens.dart';
-import 'package:pay_flow/shared/widget/goup_label_button_widget/group_label_button_widget.dart';
+import 'package:pay_flow/shared/widget/goup_label_button/group_label_button_widget.dart';
 
 class BottomSheetWidget extends StatelessWidget {
   final String title;
@@ -25,6 +25,7 @@ class BottomSheetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: AppColors.shape,
       child: Column(
         children: [
           Expanded(

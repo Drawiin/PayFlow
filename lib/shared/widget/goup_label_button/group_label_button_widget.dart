@@ -9,13 +9,17 @@ class GroupLabelButtonWidget extends StatelessWidget {
   final String secondaryLabel;
   final VoidCallback primaryOnTap;
   final VoidCallback secondaryOnTap;
+  final bool enablePrimary;
+  final bool enableSecondary;
 
   const GroupLabelButtonWidget(
       {Key? key,
       required this.primaryLabel,
       required this.secondaryLabel,
       required this.primaryOnTap,
-      required this.secondaryOnTap})
+      required this.secondaryOnTap,
+      this.enablePrimary = true,
+      this.enableSecondary = false})
       : super(key: key);
 
   @override
@@ -26,12 +30,19 @@ class GroupLabelButtonWidget extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: LabelButtonWidget(label: primaryLabel, onTap: primaryOnTap, primary: true,),
+            child: LabelButtonWidget(
+              label: primaryLabel,
+              onTap: primaryOnTap,
+              primary: enablePrimary,
+            ),
           ),
           DividerWidget(),
           Expanded(
-            child:
-                LabelButtonWidget(label: secondaryLabel, onTap: secondaryOnTap),
+            child: LabelButtonWidget(
+              label: secondaryLabel,
+              onTap: secondaryOnTap,
+              primary: enableSecondary,
+            ),
           ),
         ],
       ),

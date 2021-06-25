@@ -3,9 +3,10 @@ import 'package:pay_flow/modules/barcode_scanner/barcode_scanner_controller.dart
 import 'package:pay_flow/modules/barcode_scanner/barcode_scanner_status.dart';
 import 'package:pay_flow/shared/themes/app_colors.dart';
 import 'package:pay_flow/shared/themes/app_text_styles.dart';
+import 'package:pay_flow/shared/values/app_routes.dart';
 import 'package:pay_flow/shared/values/app_strings.dart';
 import 'package:pay_flow/shared/widget/bottom_sheet/bottom_sheet_widget.dart';
-import 'package:pay_flow/shared/widget/goup_label_button_widget/group_label_button_widget.dart';
+import 'package:pay_flow/shared/widget/goup_label_button/group_label_button_widget.dart';
 
 class BarcodeScannerScreen extends StatefulWidget {
   const BarcodeScannerScreen({Key? key}) : super(key: key);
@@ -20,6 +21,15 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
   @override
   void initState() {
     controller.getAvailableCameras();
+    controller.statusNotifier.addListener(() {
+      if (controller.status.hasBarcode) {
+        Navigator.pushReplacementNamed(
+          context,
+          AppRoutes.insetInvoice,
+          arguments: controller.status.barcode,
+        );
+      }
+    });
     super.initState();
   }
 
@@ -39,7 +49,7 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
             builder: (context, value, child) {
               if (value.showCamera) {
                 return Container(
-                  child: value.cameraController?.buildPreview(),
+                  child: controller.cameraController?.buildPreview(),
                 );
               }
               return Container();
@@ -84,31 +94,37 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
               bottomNavigationBar: GroupLabelButtonWidget(
                   primaryLabel: AppStrings.barcodeScannerInsertCode,
                   secondaryLabel: AppStrings.barcodeScannerAddFromGallery,
-                  primaryOnTap: () {},
-                  secondaryOnTap: () {}),
+                  primaryOnTap: () => Navigator.pushReplacementNamed(
+                      context, AppRoutes.insetInvoice),
+                  secondaryOnTap: controller.scanWithImagePicker),
             ),
           ),
           ValueListenableBuilder<BarcodeScannerStatus>(
-            valueListenable: controller.statusNotifier,
-            builder: (context, value, child) {
-              if (value.hasError) {
-                return RotatedBox(
-                  quarterTurns: 1,
-                  child: Material(
-                    child: BottomSheetWidget(
-                      title: AppStrings.barcodeScannerErrorTitle,
-                      subtitle: AppStrings.barcodeScannerErrorSubtitle,
-                      primaryLabel: AppStrings.barcodeScannerInsertCode,
-                      secondaryLabel: AppStrings.barcodeScannerAddFromGallery,
-                      primaryOnTap: () {},
-                      secondaryOnTap: () {},
+              valueListenable: controller.statusNotifier,
+              builder: (_, status, __) {
+                if (status.hasError) {
+                  return RotatedBox(
+                    quarterTurns: 1,
+                    child: Material(
+                      child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: BottomSheetWidget(
+                            title: AppStrings.barcodeScannerErrorTitle,
+                            subtitle: AppStrings.barcodeScannerErrorSubtitle,
+                            primaryLabel: AppStrings.barcodeScannerInsertCode,
+                            secondaryLabel:
+                                AppStrings.barcodeScannerAddFromGallery,
+                            primaryOnTap: () => controller.scanWithCamera(),
+                            secondaryOnTap: () =>
+                                Navigator.pushReplacementNamed(
+                                    context, AppRoutes.insetInvoice),
+                          )),
                     ),
-                  ),
-                );
-              }
-              return Container();
-            },
-          ),
+                  );
+                } else {
+                  return Container();
+                }
+              }),
         ],
       ),
     );
